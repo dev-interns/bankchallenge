@@ -1,6 +1,6 @@
 package Transactions;
 
-class MessageTransaction{
+public class MessageTransaction {
 
     private int customerId;
     private String customerEmail;
