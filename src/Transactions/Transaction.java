@@ -8,9 +8,25 @@ public abstract class Transaction{
     private int idTransaction;
     private String transactionDate;
     private Double transactionValue;
+    protected Operation operation;
 
-    public double performOperation(){
-        return 10 + (15 - 10) * new Random().nextDouble();
+    public int performOperation(){
+        return operation.run();
     }
-    
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public int getIdTransaction() {
+        return idTransaction;
+    }
+
+    public String getTransactionDate() {
+        return transactionDate;
+    }
+
+    public Double getTransactionValue() {
+        return transactionValue;
+    }
 }
