@@ -1,3 +1,5 @@
+package com.endava.bankchallenge.model;
+
 public class Bank {
     public int bankId;
     public String name;

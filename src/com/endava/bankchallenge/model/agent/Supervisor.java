@@ -1,4 +1,4 @@
-package Agents;
+package com.endava.bankchallenge.model.agent;
 
 public class Supervisor extends Agent {
 

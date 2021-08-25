@@ -1,6 +1,7 @@
-package Agents;
+package com.endava.bankchallenge.factory;
 
-import Transactions.Transaction;
+import com.endava.bankchallenge.model.agent.Agent;
+import com.endava.bankchallenge.model.agent.Cashier;
 
 import java.util.Random;
 

@@ -1,6 +1,6 @@
-package Transactions;
+package com.endava.bankchallenge.model;
 
-import java.util.Random;
+import com.endava.bankchallenge.strategy.Operation;
 
 public abstract class Transaction{
 

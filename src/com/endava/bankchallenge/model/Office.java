@@ -1,3 +1,5 @@
+package com.endava.bankchallenge.model;
+
 public class Office {
     public int officeId;
     public String name;

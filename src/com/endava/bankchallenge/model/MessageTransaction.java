@@ -1,6 +1,4 @@
-package Transactions;
-
-import Agents.AgentFactory;
+package com.endava.bankchallenge.model;
 
 public class MessageTransaction {
 
@@ -23,4 +21,5 @@ public class MessageTransaction {
         this.transactionValue = transactionValue;
         this.transactionType = transactionType;
     }
+
 }

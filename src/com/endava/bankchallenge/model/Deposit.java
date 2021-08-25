@@ -1,6 +1,8 @@
-package Transactions;
+package com.endava.bankchallenge.model;
 
-public class Deposit extends Transaction{
+import com.endava.bankchallenge.strategy.RandomOperation;
+
+public class Deposit extends Transaction {
     public Deposit(String transactionType, int idTransaction, String transactionDate, Double transactionValue) {
         super(transactionType, idTransaction, transactionDate, transactionValue);
         this.operation = new RandomOperation();
