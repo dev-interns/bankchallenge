@@ -12,7 +12,7 @@ public abstract class Agent {
         this.agentId = agentId;
         this.type = type;
     }
-    public int processTransaction(Transaction transaction, int time){
+    public Integer processTransaction(Transaction transaction, int time){
         return transaction.performOperation();
     }
 

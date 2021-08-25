@@ -12,13 +12,13 @@ public class Dispatcher {
         this.agentFactory = new AgentFactory();
         this.transactionFactory = new TransactionFactory();
     }
-    public void attend(Customer customer, String transactionType) throws Exception {
+    public void attend(Customer customer, String transactionType, int time) throws Exception {
         Transaction transaction = transactionFactory.createTransaction(transactionType);
         //logic get the type of agent
 
         String type = "Cashier";
         Agent agent = agentFactory.createAgent(type);
-        int time =agent.processTransaction(transaction,21);
+        int timetoadd =agent.processTransaction(transaction,21);
         System.out.println("I'm a " + agent.getType());
         System.out.println("I attend " + transaction.getTransactionType());
         System.out.println("in: " + time + " s");
