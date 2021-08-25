@@ -1,5 +1,6 @@
-import Offices.Office;
-import Offices.OfficeFactory;
+
+
+package com.endava.bankchallenge.model;
 
 import java.util.List;
 

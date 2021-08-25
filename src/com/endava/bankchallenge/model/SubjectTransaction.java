@@ -1,6 +1,6 @@
-package Transactions;
+package com.endava.bankchallenge.model;
 
-import ObserverTransaction.IObserverTransaction;
+import com.endava.bankchallenge.observer.IObserverTransaction;
 
 import java.util.List;
 

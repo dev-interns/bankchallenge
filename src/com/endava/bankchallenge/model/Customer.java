@@ -1,4 +1,4 @@
-package Customers;
+package com.endava.bankchallenge.model;
 
 public class Customer {
     public String firstName;
