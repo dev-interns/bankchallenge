@@ -8,7 +8,7 @@ public class TransactionFactory {
             case "Withdraw":
                 return new Withdraw();
             case "Deposit":
-                return new Deposit();
+                return new Deposit(transactionType);
             default:
                 return null;
         }

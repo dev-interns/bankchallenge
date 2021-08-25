@@ -11,7 +11,7 @@ public abstract class Agent {
         this.agentId = agentId;
         this.type = type;
     }
-    public double processTransaction(Transaction transaction){
+    public int processTransaction(Transaction transaction){
         return transaction.performOperation();
     }
 

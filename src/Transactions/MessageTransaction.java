@@ -1,5 +1,7 @@
 package Transactions;
 
+import Agents.AgentFactory;
+
 public class MessageTransaction {
 
     private int customerId;
