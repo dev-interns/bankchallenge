@@ -18,7 +18,7 @@ public class Dispatcher {
 
         String type = "Cashier";
         Agent agent = agentFactory.createAgent(type);
-        int time =agent.processTransaction(transaction);
+        int time =agent.processTransaction(transaction,21);
         System.out.println("I'm a " + agent.getType());
         System.out.println("I attend " + transaction.getTransactionType());
         System.out.println("in: " + time + " s");

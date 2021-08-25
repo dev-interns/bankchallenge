@@ -1,5 +1,8 @@
 package com.endava.bankchallenge;
 
+import com.endava.bankchallenge.model.Customer;
+import com.endava.bankchallenge.model.Dispatcher;
+
 import java.util.stream.IntStream;
 
 public class EntryPoint {
