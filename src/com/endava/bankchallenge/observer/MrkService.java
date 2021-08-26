@@ -8,10 +8,10 @@ import com.endava.bankchallenge.model.MessageTransaction;
 
 
         @Override
-        public void Update(MessageTransaction mensaje) {
+        public void Update(MessageTransaction message) {
 
-            System.out.println("Check value: "+mensaje.getTransactionValue());
-            this.sendAD(mensaje.getCustomerId(), mensaje.getCustomerEmail());
+            System.out.println("Check value: "+ message.getTransactionValue());
+            this.sendAD(message.getCustomerId(), message.getCustomerEmail());
         }
 
         public void sendAD(int customerId, String customerEmail){
