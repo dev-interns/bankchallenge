@@ -2,15 +2,15 @@ package com.endava.bankchallenge.model;
 
 public class Office {
     private int officeId;
-    private String name;
-    private String address;
-    private String type;
+    private String officeName;
+    private String officeAddress;
+    private String officeType;
 
-    public Office(int officeId, String name, String address, String type){
+    public Office(int officeId, String officeName, String officeAddress, String officeType){
         this.officeId = officeId;
-        this.name = name;
-        this.address = address;
-        this.type = type;
+        this.officeName = officeName;
+        this.officeAddress = officeAddress;
+        this.officeType = officeType;
     }
 
     public int getOfficeId() {
@@ -21,27 +21,27 @@ public class Office {
         this.officeId = officeId;
     }
 
-    public String getName() {
-        return name;
+    public String getOfficeName() {
+        return officeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getOfficeAddress() {
+        return officeAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setOfficeAddress(String officeAddress) {
+        this.officeAddress = officeAddress;
     }
 
-    public String getType() {
-        return type;
+    public String getOfficeType() {
+        return officeType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setOfficeType(String officeType) {
+        this.officeType = officeType;
     }
 }
