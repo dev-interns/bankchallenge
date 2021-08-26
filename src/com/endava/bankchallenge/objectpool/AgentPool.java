@@ -38,7 +38,7 @@ public class AgentPool {
         // option on streams to get a new one
         // counters in a map
     }
-    public Agent getAgent(int time){
+    public Agent getAgent(int time) throws Exception{
         // updateagents
         agents.forEach(agent ->{
             agent.updateTime(time);
@@ -63,11 +63,7 @@ public class AgentPool {
                 return temagent;
             }
         }
-        //}else{
-            //get the fist agent and return 
-        //}
-        // throw error
-        return new AgentFactory().createAgent("Cashier");
+        throw new Exception("No agents avaible");
     }
     // }
     public static List<Agent> updateAgentList(List<Agent> list, int time)

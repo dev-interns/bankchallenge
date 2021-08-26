@@ -28,7 +28,7 @@ public abstract class Transaction{
 
     public int performOperation(Agent agent){
         this.customer.setAttended(true);
-        MessageTransaction mt = new MessageTransaction(customer.getCustomerId(), customer.getCustomerEmail(), customer.getAccountId(), agent.getAgentId(), "", this.transactionDate, this.transactionValue, this.transactionType);
+        MessageTransaction mt = new MessageTransaction(customer.getCustomerId(), customer.getCustomerEmail(), customer.getAccountId(), agent.getAgentId(), "Notification", this.transactionDate, this.transactionValue, this.transactionType);
         SubjectTransaction.getInstance().notifyListeners(mt);
         return operation.run();
     }

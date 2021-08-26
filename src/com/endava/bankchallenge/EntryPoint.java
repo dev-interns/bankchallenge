@@ -2,7 +2,6 @@ package com.endava.bankchallenge;
 
 import com.endava.bankchallenge.model.Customer;
 import com.endava.bankchallenge.model.Dispatcher;
-import com.endava.bankchallenge.model.MessageTransaction;
 import com.endava.bankchallenge.model.SubjectTransaction;
 import com.endava.bankchallenge.observer.AuditService;
 import com.endava.bankchallenge.observer.MrkService;
@@ -20,7 +19,7 @@ public class EntryPoint {
         SubjectTransaction.getInstance().attach(new MrkService());
         for (time = 0; time < 5; time++) {
             System.out.println("Time :" + time + "s");
-            int nclients = new Random().nextInt(5);
+            int nclients = new Random().nextInt(20);
             System.out.println(nclients);
             for (int i = 0; i < nclients; i++) {
                 customers.add(new Customer("juan", "Castro", 2123, 12, "juan@endava.com"));
