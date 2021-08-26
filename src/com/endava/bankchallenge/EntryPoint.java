@@ -1,13 +1,11 @@
 package com.endava.bankchallenge;
 
-import com.endava.bankchallenge.model.Bank;
 import com.endava.bankchallenge.model.Customer;
 import com.endava.bankchallenge.model.Dispatcher;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.IntStream;
 
 public class EntryPoint {
     static int time;
@@ -17,7 +15,6 @@ public class EntryPoint {
         
         for (time = 0; time < 5; time++) {
             System.out.println("Time :" + time + "s");
-            //TODO create random number of clients
             int nclients = new Random().nextInt(5);
             System.out.println(nclients);
             for (int i = 0; i < nclients; i++) {
@@ -29,7 +26,6 @@ public class EntryPoint {
                     if(! customer.isAttended())
                         dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
