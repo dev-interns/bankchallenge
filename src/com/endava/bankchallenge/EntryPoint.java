@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class EntryPoint {
     public static void main(String[] args) {
         Dispatcher dispatcher = new Dispatcher();
-        for (int time = 0; time < 100; time++) {
+        for (int time = 0; time < 1; time++) {
             Customer customer = new Customer("Luis", "Otalora", 152, 12, "lotalora21@gmail.com");
             try {
                 dispatcher.attend(customer, "Deposit",time);

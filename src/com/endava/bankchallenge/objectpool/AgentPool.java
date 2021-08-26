@@ -3,14 +3,28 @@ package com.endava.bankchallenge.objectpool;
 import com.endava.bankchallenge.factory.AgentFactory;
 import com.endava.bankchallenge.model.agent.Agent;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
+
 
 public class AgentPool {
     private List<Agent> agents;
     private final AgentFactory agentFactory;
-    public AgentPool(Integer n){
+    HashMap<String,Integer> agentdict;
+    public AgentPool(){
         agentFactory = new AgentFactory();
-
+        agents = new ArrayList<>();
+        String[] agentsnames = {"Cashier","Supervisor","Director"};
+        agentdict = new HashMap<>();
+        IntStream.range(0, agentsnames.length)
+            .forEach(cat ->{
+                agentdict.put(agentsnames[cat], new Random().nextInt(5));
+            });
+        System.out.println(agentdict.toString());
+        createAgent();
         // initialize all agents
         // [cashiser,cashiser,supervisor,supervisor,directo]
         // update busy agents state
@@ -18,16 +32,18 @@ public class AgentPool {
         // option on streams to get a new one
         // counters in a map
     }
-    {
-        "Cashier":2,
-        "Supervisor":1,
-        "Director":5
-    }
-    public Agent getAgent(){
-        if(ncashier >0){
-            return agentFactory.createAgent("Cashier");
+    public void getAgent(){
+        if(agents.isEmpty()){
+            //create a new agent append and return
+        }else{
+            //get the fist agent and return 
         }
-        return null;
+        // throw error
+    }
+    // }
+    public void createAgent(){
+        System.out.println("----Agent----");
+        System.out.println(this.agentdict.keySet().stream().filter(e -> agentdict.get(e)>0).findFirst());
     }
     public List<Agent> getAgents() {
         return agents;
