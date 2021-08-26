@@ -2,6 +2,7 @@ package com.endava.bankchallenge.model;
 
 import com.endava.bankchallenge.observer.IObserverTransaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class SubjectTransaction {
@@ -10,10 +11,12 @@ public final class SubjectTransaction {
     private static SubjectTransaction instance;
 
     private SubjectTransaction(){
+        subscriptors = new ArrayList<>();
     }
     public static SubjectTransaction getInstance(){
         if(instance==null)
             instance = new SubjectTransaction();
+        
         return instance;
     }
 

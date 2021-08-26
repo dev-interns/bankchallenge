@@ -2,6 +2,10 @@ package com.endava.bankchallenge;
 
 import com.endava.bankchallenge.model.Customer;
 import com.endava.bankchallenge.model.Dispatcher;
+import com.endava.bankchallenge.model.MessageTransaction;
+import com.endava.bankchallenge.model.SubjectTransaction;
+import com.endava.bankchallenge.observer.AuditService;
+import com.endava.bankchallenge.observer.MrkService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +16,8 @@ public class EntryPoint {
     public static void main(String[] args) {
         List<Customer> customers = new ArrayList<>();
         Dispatcher dispatcher = new Dispatcher();
-        
+        SubjectTransaction.getInstance().attach(new AuditService());
+        SubjectTransaction.getInstance().attach(new MrkService());
         for (time = 0; time < 5; time++) {
             System.out.println("Time :" + time + "s");
             int nclients = new Random().nextInt(5);
