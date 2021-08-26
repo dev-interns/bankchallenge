@@ -14,16 +14,19 @@ public class EntryPoint {
         List<Customer> customers = new ArrayList<>();
         Dispatcher dispatcher = new Dispatcher();
         
-        for (time = 0; time < 1; time++) {
+        for (time = 0; time < 5; time++) {
+            System.out.println("Time :" + time + "s");
             //TODO create random number of clients
             int nclients = new Random().nextInt(5);
+            System.out.println(nclients);
             for (int i = 0; i < nclients; i++) {
                 customers.add(new Customer("juan", "Castro", 2123, 12, "juan@endava.com"));
             }
             customers.stream().forEach(customer ->{
-                String[] transactionType = {"Cashier","Director","Subject"};
+                String[] transactionType = {"Deposit","Transfer","Withdraw"};
                 try {
-                    dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
+                    if(! customer.isAttended())
+                        dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

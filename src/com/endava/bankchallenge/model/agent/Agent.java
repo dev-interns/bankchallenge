@@ -8,12 +8,16 @@ public abstract class Agent {
     private String type;
     private int timeToEmpty;
     public Agent(boolean busy, int agentId, String type) {
-        this.busy = busy;
+        this.busy = false;
         this.agentId = agentId;
         this.type = type;
+        this.timeToEmpty=0;
     }
     public Integer processTransaction(Transaction transaction, int time){
-        return transaction.performOperation();
+        int operationTime = transaction.performOperation();
+        this.timeToEmpty = time +operationTime; 
+        this.busy = true;
+        return operationTime;
     }
 
     public boolean isBusy() {
@@ -37,4 +41,8 @@ public abstract class Agent {
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
+    public int getTimeToEmpty(){
+        return this.timeToEmpty;
+    }
 }
+

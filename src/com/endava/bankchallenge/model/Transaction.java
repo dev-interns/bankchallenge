@@ -26,6 +26,7 @@ public abstract class Transaction{
     }
 
     public int performOperation(){
+        this.customer.setAttended(true);
         return operation.run();
     }
 
