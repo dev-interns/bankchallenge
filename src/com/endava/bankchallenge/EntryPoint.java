@@ -17,19 +17,20 @@ public class EntryPoint {
         Dispatcher dispatcher = new Dispatcher();
         SubjectTransaction.getInstance().attach(new AuditService());
         SubjectTransaction.getInstance().attach(new MrkService());
-        for (time = 0; time < 10; time++) {
+        for (time = 0; time < 2; time++) {
             System.out.println("Time :" + time + "s");
-            int nclients = new Random().nextInt(20);
+            int nclients = new Random().nextInt(20)+10;
             System.out.println(nclients);
             for (int i = 0; i < nclients; i++) {
                 customers.add(new Customer("juan", "Castro", 2123, 12, "juan@endava.com"));
             }
-            customers.stream().forEach(customer ->{
+            customers.forEach(customer ->{
                 String[] transactionType = {"Deposit","Transfer","Withdraw"};
                 try {
-                    if(! customer.isAttended())
+                    if(!customer.isAttended())
                         dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
                 } catch (Exception e) {
+                    System.out.println("time:"+time);
                     System.err.println(e.getMessage());
                 }
             });

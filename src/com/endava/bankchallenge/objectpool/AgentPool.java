@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import com.endava.bankchallenge.factory.AgentFactory;
 import com.endava.bankchallenge.model.agent.Agent;
@@ -15,48 +14,44 @@ import java.util.Arrays;
 public class AgentPool {
     private List<Agent> agents;
     private final AgentFactory agentFactory;
-    private final List<String> agentsnames = new ArrayList<String>(Arrays.asList("Cashier","Supervisor","Director"));
-    HashMap<String,Integer> agentdict;
-    public AgentPool(){
+    private final List<String> agentTypes = new ArrayList<>(Arrays.asList("Cashier", "Supervisor", "Director"));
+    HashMap<String, Integer> agentAvailability;
+
+    public AgentPool() {
         agentFactory = new AgentFactory();
         agents = new ArrayList<>();
-        agentdict = new HashMap<>();
-        IntStream.range(0, agentsnames.size())
-            .forEach(cat ->{
-                agentdict.put(agentsnames.get(cat), new Random().nextInt(10)+1);
-            });
-        System.out.println(agentdict.toString());
+        agentAvailability = new HashMap<>();
+        agentTypes
+                .forEach(agentType -> agentAvailability.put(agentType, new Random().nextInt(10) + 1));
     }
-    public Agent getAgent(int time) throws Exception{
+
+    public Agent getAgent(int time) throws Exception {
         // updateagents
         //computeIfAbscent
         //compute
-        agents.forEach(agent ->{
+        agents.forEach(agent -> {
             agent.updateTime(time);
-            if(!agent.isBusy()){
-                agentdict.put(agent.getType(), agentdict.get(agent.getType())+1);
+            if (!agent.isBusy()) {
+                agentAvailability.put(agent.getType(), agentAvailability.get(agent.getType()) + 1);
             }
         });
-        agents = updateAgentList(agents, time);
-        for(String agentname : agentsnames){
-            if(agentdict.get(agentname)>0 ){
-                agentdict.put(agentname, agentdict.get(agentname)-1);
-                Agent agent = agentFactory.createAgent(agentname);
+        agents = updateAgentList(agents);
+        for (String agentName : agentTypes) {
+            if (agentAvailability.get(agentName) > 0) {
+                System.out.println(this.agentAvailability);
+                agentAvailability.put(agentName, agentAvailability.get(agentName) - 1);
+                Agent agent = agentFactory.createAgent(agentName);
                 agents.add(agent);
-                System.out.println(this.agentdict);
                 return agent;
             }
         }
         throw new Exception("No agents available");
     }
-    public static List<Agent> updateAgentList(List<Agent> list, int time)
-{
-    return list.stream()
-                .filter(x -> x.isBusy())
+
+    public static List<Agent> updateAgentList(List<Agent> list) {
+        return list.stream()
+                .filter(Agent::isBusy)
                 .collect(Collectors.toList());
-}
-    public List<Agent> getAgents() {
-        return agents;
     }
 
 }

@@ -14,13 +14,9 @@ public class Dispatcher {
     }
     public void attend(Customer customer, String transactionType, int time) throws Exception {
         Transaction transaction = transactionFactory.createTransaction(transactionType,customer);
-        //logic get the type of agent
         Agent agent = agentPool.getAgent(time);
         int transactionTime = agent.processTransaction(transaction, time);
-        //String.format("I.m %s",)
-        System.out.println("I'm a " + agent.getType());
-        System.out.println("I attend " + transaction.getTransactionType());
-        System.out.println("in: " + transactionTime + " s");
+        System.out.printf("I.m a %s \nI attend a %s \nIn: %s s\n",agent.getType(),transaction.getTransactionType(),transactionTime);
     }
 
     public double getTime() {
