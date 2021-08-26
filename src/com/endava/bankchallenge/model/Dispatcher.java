@@ -16,12 +16,11 @@ public class Dispatcher {
         this.agentPool = new AgentPool();
     }
     public void attend(Customer customer, String transactionType, int time) throws Exception {
-        Transaction transaction = transactionFactory.createTransaction(transactionType);
+        Transaction transaction = transactionFactory.createTransaction(transactionType,customer);
         //logic get the type of agent
+        Agent agent = agentPool.getAgent();
+        agent.processTransaction(transaction, time);
 
-        String type = "Cashier";
-        Agent agent = agentFactory.createAgent(type);
-        int timetoadd =agent.processTransaction(transaction,21);
         System.out.println("I'm a " + agent.getType());
         System.out.println("I attend " + transaction.getTransactionType());
         System.out.println("in: " + time + " s");

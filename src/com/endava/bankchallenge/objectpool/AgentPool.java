@@ -24,7 +24,6 @@ public class AgentPool {
                 agentdict.put(agentsnames[cat], new Random().nextInt(5));
             });
         System.out.println(agentdict.toString());
-        createAgent();
         // initialize all agents
         // [cashiser,cashiser,supervisor,supervisor,directo]
         // update busy agents state

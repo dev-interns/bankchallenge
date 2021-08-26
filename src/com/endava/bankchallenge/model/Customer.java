@@ -1,11 +1,12 @@
 package com.endava.bankchallenge.model;
 
 public class Customer {
-    public String firstName;
-    public String lastName;
-    public int customerId;
-    public int accountId;
-    public String customerEmail;
+    private String firstName;
+    private String lastName;
+    private int customerId;
+    private int accountId;
+    private String customerEmail;
+    private boolean attended;
 
     public Customer(String firstName, String lastName, int customerId, int accountId, String customerEmail) {
         this.firstName = firstName;
@@ -13,6 +14,7 @@ public class Customer {
         this.customerId = customerId;
         this.accountId = accountId;
         this.customerEmail = customerEmail;
+        this.attended = false;
     }
 
     public void setFirstName(String firstName) {
@@ -35,6 +37,10 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
+    public void setAttended(boolean attended) {
+        this.attended = attended;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -43,10 +49,19 @@ public class Customer {
         return lastName;
     }
 
-    public int getCustomerId() { return customerId; }
+    public int getCustomerId() {
+        return customerId;
+    }
 
-    public int getAccountId() { return accountId; }
+    public int getAccountId() {
+        return accountId;
+    }
 
-    public String getCustomerEmail() { return customerEmail; }
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
 
+    public boolean isAttended() {
+        return attended;
+    }
 }

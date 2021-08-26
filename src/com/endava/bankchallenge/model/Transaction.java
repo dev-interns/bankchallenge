@@ -13,14 +13,16 @@ public abstract class Transaction{
     protected String transactionDate;
     protected Double transactionValue;
     protected Operation operation;
+    protected Customer customer;
 
-    public Transaction(String transactionType) {
+    public Transaction(String transactionType,Customer customer) {
         this.transactionType = transactionType;
         this.idTransaction = new Random().nextInt(1098987);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();  
         this.transactionDate = dtf.format(now);
         this.transactionValue = (50000.0 ) * new Random().nextDouble();
+        this.customer = customer;
     }
 
     public int performOperation(){
