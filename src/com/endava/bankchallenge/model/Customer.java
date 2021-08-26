@@ -8,7 +8,7 @@ public class Customer {
     private String customerEmail;
     private boolean attended;
 
-    public Customer(String firstName, String lastName, int customerId, int accountId, String customerEmail) {
+    public Customer(String firstName, String lastName, int customerId, int accountId, String customerEmail, boolean attended) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.customerId = customerId;

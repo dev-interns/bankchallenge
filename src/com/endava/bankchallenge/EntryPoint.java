@@ -1,5 +1,6 @@
 package com.endava.bankchallenge;
 
+import com.endava.bankchallenge.model.Bank;
 import com.endava.bankchallenge.model.Customer;
 import com.endava.bankchallenge.model.Dispatcher;
 
