@@ -17,7 +17,7 @@ public class EntryPoint {
         Dispatcher dispatcher = new Dispatcher();
         SubjectTransaction.getInstance().attach(new AuditService());
         SubjectTransaction.getInstance().attach(new MrkService());
-        for (time = 0; time < 5; time++) {
+        for (time = 0; time < 10; time++) {
             System.out.println("Time :" + time + "s");
             int nclients = new Random().nextInt(20);
             System.out.println(nclients);
@@ -30,7 +30,7 @@ public class EntryPoint {
                     if(! customer.isAttended())
                         dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
                 }
             });
         }

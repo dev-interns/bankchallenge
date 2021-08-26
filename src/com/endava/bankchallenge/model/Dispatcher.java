@@ -17,6 +17,7 @@ public class Dispatcher {
         //logic get the type of agent
         Agent agent = agentPool.getAgent(time);
         int transactionTime = agent.processTransaction(transaction, time);
+        //String.format("I.m %s",)
         System.out.println("I'm a " + agent.getType());
         System.out.println("I attend " + transaction.getTransactionType());
         System.out.println("in: " + transactionTime + " s");

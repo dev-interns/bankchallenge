@@ -37,6 +37,7 @@ public class AuditService implements IObserverTransaction{
                 e.printStackTrace();
             } finally {
                 try {
+                    //try with resources
                     if (bufferedWriter != null)
                         bufferedWriter.close();
                     if (fileWriter != null)

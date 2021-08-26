@@ -29,6 +29,8 @@ public class AgentPool {
     }
     public Agent getAgent(int time) throws Exception{
         // updateagents
+        //computeIfAbscent
+        //compute
         agents.forEach(agent ->{
             agent.updateTime(time);
             if(!agent.isBusy()){
@@ -39,13 +41,13 @@ public class AgentPool {
         for(String agentname : agentsnames){
             if(agentdict.get(agentname)>0 ){
                 agentdict.put(agentname, agentdict.get(agentname)-1);
-                Agent temagent = agentFactory.createAgent(agentname);
-                agents.add(temagent);
+                Agent agent = agentFactory.createAgent(agentname);
+                agents.add(agent);
                 System.out.println(this.agentdict);
-                return temagent;
+                return agent;
             }
         }
-        throw new Exception("No agents avaible");
+        throw new Exception("No agents available");
     }
     public static List<Agent> updateAgentList(List<Agent> list, int time)
 {
