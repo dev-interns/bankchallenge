@@ -1,4 +1,4 @@
-//package com.endava.bankchallenge.objectpool;
+package com.endava.bankchallenge.objectpool;
 
 //import com.endava.bankchallenge.factory.AgentFactory;
 //import com.endava.bankchallenge.model.agent.Agent;
@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import com.endava.bankchallenge.factory.AgentFactory;
+import com.endava.bankchallenge.model.agent.Agent;
+
 import java.util.Arrays;
 
 
@@ -76,4 +80,4 @@ public class AgentPool {
         return agents;
     }
 
-}*/
+}

@@ -19,8 +19,7 @@ public class CustomerFactory {
         customers = new ArrayList<>();
         for (int i=0;i<numberCustomers;i++){
             customers.add(new Customer(firstNames[new Random().nextInt(firstNames.length-1)],lastNames[new Random().nextInt(lastNames.length-1)],
-                    new Random().nextInt(999999999), new Random().nextInt(999999999), firstNames[new Random().nextInt(firstNames.length-1)]+"."+lastNames[new Random().nextInt(lastNames.length-1)]+"@bank.com",
-                    false));
+                    new Random().nextInt(999999999), new Random().nextInt(999999999), firstNames[new Random().nextInt(firstNames.length-1)]+"."+lastNames[new Random().nextInt(lastNames.length-1)]+"@bank.com"));
         }
         return customers;
     }
