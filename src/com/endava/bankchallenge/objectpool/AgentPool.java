@@ -22,19 +22,14 @@ public class AgentPool {
         agents = new ArrayList<>();
         agentAvailability = new HashMap<>();
         agentTypes
-                .forEach(agentType -> agentAvailability.put(agentType, new Random().nextInt(10) + 1));
+                .forEach(agentType -> agentAvailability.put(agentType, new Random().nextInt(40) + 10));
     }
 
-    public Agent getAgent(int time) throws Exception {
-        // updateagents
-        //computeIfAbscent
-        //compute
-        agents.forEach(agent -> {
-            agent.updateTime(time);
-            if (!agent.isBusy()) {
-                agentAvailability.put(agent.getType(), agentAvailability.get(agent.getType()) + 1);
-            }
-        });
+    public Agent getAgent(Integer time) throws Exception {
+        agents.stream()
+                .peek(agent -> agent.updateTime(time))
+                .filter(agent->!agent.isBusy())
+                .forEach(agent -> agentAvailability.compute(agent.getType(),(key, val) -> val +1));
         agents = updateAgentList(agents);
         for (String agentName : agentTypes) {
             if (agentAvailability.get(agentName) > 0) {

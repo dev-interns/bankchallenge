@@ -15,6 +15,7 @@ public class Office {
     private String officeName;
     private String officeAddress;
     private String officeType;
+    private static final String[] transactionType = {"Deposit", "Transfer", "Withdraw"};
 
     public Office(int officeId, String officeName, String officeAddress, String officeType) {
         this.officeId = officeId;
@@ -66,22 +67,24 @@ public class Office {
         for (time = 0; time < maxTime; time++) {
             System.out.println("----------------------------------------------");
             System.out.println("Time :" + time + "s");
-            int numberNewClients = new Random().nextInt(10) + 1;
+            int numberNewClients = new Random().nextInt(15) + 1;
             System.out.println("New clients: " + numberNewClients);
             customers = Stream
                     .concat(customers.stream(), customerFactory.createCustomers(numberNewClients).stream())
                     .collect(Collectors.toList());
             customers.forEach(customer -> {
-                String[] transactionType = {"Deposit", "Transfer", "Withdraw"};
-                try {
-                    if (!customer.isAttended())
-                        dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
+                if (!customer.isAttended())
+                    dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
+
             });
             System.out.println("Unattended clients " + customers.stream().filter(customer -> !customer.isAttended()).count());
         }
+        System.out.println("=================================================================");
+        System.out.println("Total unattended clients " + customers.stream().filter(customer -> !customer.isAttended()).count());
+        System.out.println("Total attended clients " + customers.stream().filter(Customer::isAttended).count());
+        dispatcher.getAvgtime();
+
+
     }
 
 }
