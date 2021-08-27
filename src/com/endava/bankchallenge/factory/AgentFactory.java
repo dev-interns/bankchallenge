@@ -15,7 +15,7 @@ public class AgentFactory {
             case "Director":
                 return new Cashier(false, new Random().nextInt(),"Director");
             default:
-                return null;
+                throw new RuntimeException("Don't supported agent type ");
         }
     }
 }

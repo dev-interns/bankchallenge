@@ -15,7 +15,7 @@ public abstract class Agent {
     }
     public Integer processTransaction(Transaction transaction, int time){
         int operationTime = transaction.performOperation(this);
-        this.timeToEmpty = time +operationTime; 
+        this.timeToEmpty = time + operationTime;
         this.busy = true;
         return operationTime;
     }

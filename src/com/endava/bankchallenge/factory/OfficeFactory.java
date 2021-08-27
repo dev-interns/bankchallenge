@@ -6,11 +6,9 @@ import java.util.Random;
 
 public class OfficeFactory {
     public static Office createOffice(String officeType, String officeName, String officeAddress){
-        switch (officeType){
-            case "classic office":
-                return new Office(new Random().nextInt(999999999),officeName,officeAddress,officeType);
-            default:
-                return null;
+        if ("classic office".equals(officeType)) {
+            return new Office(new Random().nextInt(999999999), officeName, officeAddress, officeType);
         }
+        throw new RuntimeException("Don't supported office type ");
     }
 }
