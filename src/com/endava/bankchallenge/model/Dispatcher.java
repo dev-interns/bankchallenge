@@ -16,7 +16,6 @@ public class Dispatcher {
     private final AgentPool agentPool;
     private final TransactionFactory transactionFactory;
     private final List<Integer> times;
-    private static Logger logger;
     public Dispatcher(){
         this.transactionFactory = new TransactionFactory();
         this.agentPool = new AgentPool();

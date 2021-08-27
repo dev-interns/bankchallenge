@@ -7,11 +7,11 @@ import java.util.List;
 
 public final class SubjectTransaction {
 
-    private List<ObserverTransaction> subscriptors;
+    private final List<ObserverTransaction> subscribers;
     private static SubjectTransaction instance;
 
     private SubjectTransaction(){
-        subscriptors = new ArrayList<>();
+        subscribers = new ArrayList<>();
     }
     public static SubjectTransaction getInstance(){
         if(instance==null)
@@ -21,17 +21,16 @@ public final class SubjectTransaction {
     }
 
     public void attach(ObserverTransaction newObserver){
-        this.subscriptors.add(newObserver);
+        this.subscribers.add(newObserver);
     }
 
     public void detach(ObserverTransaction observer){
-        if(this.subscriptors.contains(observer))
-            this.subscriptors.remove(observer);
+        this.subscribers.remove(observer);
     }
 
     public void notifyListeners(MessageTransaction message ){
         for (ObserverTransaction listener :
-                subscriptors) {
+                subscribers) {
             listener.update(message);
         }
 
