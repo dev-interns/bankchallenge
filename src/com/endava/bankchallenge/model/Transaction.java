@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+import com.endava.bankchallenge.model.agent.Agent;
 import com.endava.bankchallenge.strategy.Operation;
 
 public abstract class Transaction{
@@ -25,8 +26,10 @@ public abstract class Transaction{
         this.customer = customer;
     }
 
-    public int performOperation(){
+    public int performOperation(Agent agent){
         this.customer.setAttended(true);
+        MessageTransaction mt = new MessageTransaction(customer.getCustomerId(), customer.getCustomerEmail(), customer.getAccountId(), agent.getAgentId(), "Notification", this.transactionDate, this.transactionValue, this.transactionType);
+        SubjectTransaction.getInstance().notifyListeners(mt);
         return operation.run();
     }
 

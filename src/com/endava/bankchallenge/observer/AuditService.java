@@ -14,7 +14,7 @@ public class AuditService implements IObserverTransaction{
     @Override
     public void Update(MessageTransaction message) {
 
-        if(message.getTransactionType().equals("DEPOSIT") &&
+        if(message.getTransactionType().equals("Deposit") &&
                 message.getTransactionValue()> 10000){
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddYYYY");
@@ -37,6 +37,7 @@ public class AuditService implements IObserverTransaction{
                 e.printStackTrace();
             } finally {
                 try {
+                    //try with resources
                     if (bufferedWriter != null)
                         bufferedWriter.close();
                     if (fileWriter != null)
