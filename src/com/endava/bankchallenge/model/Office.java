@@ -72,11 +72,10 @@ public class Office {
             customers = Stream
                     .concat(customers.stream(), customerFactory.createCustomers(numberNewClients).stream())
                     .collect(Collectors.toList());
-            customers.forEach(customer -> {
-                if (!customer.isAttended())
-                    dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time);
-
-            });
+            customers
+                    .stream()
+                    .filter(customer -> !customer.isAttended())
+                    .forEach(customer -> dispatcher.attend(customer, transactionType[new Random().nextInt(transactionType.length)], time));
             System.out.println("Unattended clients " + customers.stream().filter(customer -> !customer.isAttended()).count());
         }
         System.out.println("=================================================================");

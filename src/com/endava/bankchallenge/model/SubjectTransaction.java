@@ -1,13 +1,13 @@
 package com.endava.bankchallenge.model;
 
-import com.endava.bankchallenge.observer.IObserverTransaction;
+import com.endava.bankchallenge.observer.ObserverTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class SubjectTransaction {
 
-    private List<IObserverTransaction> subscriptors;
+    private List<ObserverTransaction> subscriptors;
     private static SubjectTransaction instance;
 
     private SubjectTransaction(){
@@ -20,19 +20,19 @@ public final class SubjectTransaction {
         return instance;
     }
 
-    public void attach(IObserverTransaction newObserver){
+    public void attach(ObserverTransaction newObserver){
         this.subscriptors.add(newObserver);
     }
 
-    public void detach(IObserverTransaction observer){
+    public void detach(ObserverTransaction observer){
         if(this.subscriptors.contains(observer))
             this.subscriptors.remove(observer);
     }
 
     public void notifyListeners(MessageTransaction message ){
-        for (IObserverTransaction listener :
+        for (ObserverTransaction listener :
                 subscriptors) {
-            listener.Update(message);
+            listener.update(message);
         }
 
     }

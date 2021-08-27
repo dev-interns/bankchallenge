@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class AuditService implements IObserverTransaction{
+public class AuditService implements ObserverTransaction {
     @Override
-    public void Update(MessageTransaction message) {
+    public void update(MessageTransaction message) {
 
         if(message.getTransactionType().equals("Deposit") &&
                 message.getTransactionValue()> 10000){

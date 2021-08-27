@@ -21,17 +21,6 @@ public class Dispatcher {
         this.transactionFactory = new TransactionFactory();
         this.agentPool = new AgentPool();
         this.times = new ArrayList<>();
-        Handler fileHandler = null;
-        try {
-            File file = new File("logger.log");
-            if (!file.exists())
-                file.createNewFile();
-            fileHandler = new FileHandler("logger.log", 50000, 1);
-            logger = Logger.getLogger(Dispatcher.class.getName());
-            logger.addHandler(fileHandler);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     public void attend(Customer customer, String transactionType, int time){
         try {
@@ -41,8 +30,7 @@ public class Dispatcher {
             times.add(transactionTime);
             System.out.printf("I'm a %s \nI attend a %s \nIn: %s s\n",agent.getType(),transaction.getTransactionType(),transactionTime);
         } catch (Exception e) {
-            System.err.println(e.getMessage() + " Second: " + time + "s");
-            //logger.log(Level.INFO,e.getMessage() + " Second: " + time + "s");
+            System.out.println(e.getMessage() + " Second: " + time + "s");
         }
     }
     public void getAvgtime(){

@@ -2,7 +2,7 @@ package com.endava.bankchallenge.observer;
 
 import com.endava.bankchallenge.model.MessageTransaction;
 
-public interface IObserverTransaction {
+public interface ObserverTransaction {
 
-    public void Update(MessageTransaction message);
+    void update(MessageTransaction message);
 }
