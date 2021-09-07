@@ -1,11 +1,10 @@
 package com.endava.bankchallenge.observer;
 
+import com.endava.bankchallenge.Util.DateUtil;
+import com.endava.bankchallenge.Util.FileUtil;
 import com.endava.bankchallenge.model.MessageTransaction;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.endava.bankchallenge.Properties.Config;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,38 +13,21 @@ public class AuditService implements ObserverTransaction {
     @Override
     public void update(MessageTransaction message) {
 
-        if(message.getTransactionType().equals("Deposit") &&
-                message.getTransactionValue()> 10000){
+        if(Config.AUDIT_SERVICE_TRANSACTION_TYPE.toString().equals(message.getTransactionType()) &&
+                message.getTransactionValue()> Config.AUDIT_SERVICE_MIN_TRANSACTION_VALUE){
 
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddYYYY");
-            LocalDateTime now = LocalDateTime.now();
-            String date= dtf.format(now).toString();
-            String fileName= "DEPOSITSTOREVIEW-"+date+".txt";
-            String data= message.getCustomerId()+" , "+
+            String fileName=String.format("DEPOSITSTOREVIEW-%s.txt",DateUtil.getDate());
+
+            StringBuilder data= new StringBuilder(message.getCustomerId()+" , "+
                     message.getAccountId()+" , "+
-                    message.getTransactionValue()+"\n";
-            BufferedWriter bufferedWriter = null;
-            FileWriter fileWriter = null;
+                    message.getTransactionValue()+"\n");
+            File file = null;
             try {
-                File file = new File(fileName);
-                if (!file.exists())
-                    file.createNewFile();
-                fileWriter = new FileWriter(file.getAbsoluteFile(), true);
-                bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write(data);
+                file = FileUtil.createFile(fileName);
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    //try with resources
-                    if (bufferedWriter != null)
-                        bufferedWriter.close();
-                    if (fileWriter != null)
-                        fileWriter.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
             }
+            FileUtil.writeFile(file,data.toString());
         }
     }
 }

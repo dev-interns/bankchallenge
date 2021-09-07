@@ -1,7 +1,5 @@
 package com.endava.bankchallenge.model;
-
 import com.endava.bankchallenge.observer.ObserverTransaction;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,6 @@ public final class SubjectTransaction {
     public static SubjectTransaction getInstance(){
         if(instance==null)
             instance = new SubjectTransaction();
-        
         return instance;
     }
 
@@ -35,7 +32,4 @@ public final class SubjectTransaction {
         }
 
     }
-
-
-
 }
