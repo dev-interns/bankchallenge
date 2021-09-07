@@ -5,8 +5,6 @@ import com.endava.bankchallenge.Util.FileUtil;
 import com.endava.bankchallenge.model.MessageTransaction;
 import com.endava.bankchallenge.Properties.Config;
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 public class AuditService implements ObserverTransaction {
@@ -16,7 +14,7 @@ public class AuditService implements ObserverTransaction {
         if(Config.AUDIT_SERVICE_TRANSACTION_TYPE.toString().equals(message.getTransactionType()) &&
                 message.getTransactionValue()> Config.AUDIT_SERVICE_MIN_TRANSACTION_VALUE){
 
-            String fileName=String.format("DEPOSITSTOREVIEW-%s.txt",DateUtil.getDate());
+            String fileName=String.format("DEPOSITSTOREVIEW-%s.txt",DateUtil.getCurrentDate());
 
             StringBuilder data= new StringBuilder(message.getCustomerId()+" , "+
                     message.getAccountId()+" , "+
